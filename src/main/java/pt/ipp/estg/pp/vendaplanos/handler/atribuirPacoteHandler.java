@@ -10,7 +10,7 @@ import pt.ipp.estg.pp.vendaplanos.service.ValidarPagamentoService;
  *
  * @author paulo
  */
-public class ValidarPagamentoServiceHandler implements JobHandler {
+public class atribuirPacoteHandler implements JobHandler {
     ValidarPagamentoService validarPagamentoService = new ValidarPagamentoService();
     
     @Override

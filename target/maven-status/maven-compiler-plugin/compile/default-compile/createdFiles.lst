@@ -1,0 +1,4 @@
+pt\ipp\estg\pp\vendaplanos\handler\EnviarNotificacaoHandler.class
+pt\ipp\estg\pp\vendaplanos\handler\ValidarPagamentoServiceHandler.class
+pt\ipp\estg\pp\vendaplanos\service\ValidarPagamentoService.class
+pt\ipp\estg\pp\vendaplanos\EnviarNotificacao.class

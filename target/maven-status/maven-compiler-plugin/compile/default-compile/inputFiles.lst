@@ -1,7 +1,4 @@
-C:\Users\paulo\Documents\NetBeansProjects\VendaPlanos\src\main\java\pt\ipp\estg\pp\vendaplanos\ReceberReferenciaPagamento.java
-C:\Users\paulo\Documents\NetBeansProjects\VendaPlanos\src\main\java\pt\ipp\estg\pp\vendaplanos\service\ValidarPagamentoService.java
-C:\Users\paulo\Documents\NetBeansProjects\VendaPlanos\src\main\java\pt\ipp\estg\pp\vendaplanos\handler\ValidarPagamentoServiceHandler.java
-C:\Users\paulo\Documents\NetBeansProjects\VendaPlanos\src\main\java\pt\ipp\estg\pp\vendaplanos\ValidarPagamento.java
-C:\Users\paulo\Documents\NetBeansProjects\VendaPlanos\src\main\java\pt\ipp\estg\pp\vendaplanos\service\ProcessarReferenciaPagamentoService.java
-C:\Users\paulo\Documents\NetBeansProjects\VendaPlanos\src\main\java\pt\ipp\estg\pp\vendaplanos\handler\EnviarNotificacaoHandler.java
-C:\Users\paulo\Documents\NetBeansProjects\VendaPlanos\src\main\java\pt\ipp\estg\pp\vendaplanos\handler\ReceberReferenciaPagamentoHandler.java
+C:\Users\duart\Desktop\SI\SI_GRUPO7\src\main\java\pt\ipp\estg\pp\vendaplanos\handler\ValidarPagamentoServiceHandler.java
+C:\Users\duart\Desktop\SI\SI_GRUPO7\src\main\java\pt\ipp\estg\pp\vendaplanos\handler\EnviarNotificacaoHandler.java
+C:\Users\duart\Desktop\SI\SI_GRUPO7\src\main\java\pt\ipp\estg\pp\vendaplanos\service\ValidarPagamentoService.java
+C:\Users\duart\Desktop\SI\SI_GRUPO7\src\main\java\pt\ipp\estg\pp\vendaplanos\EnviarNotificacao.java
