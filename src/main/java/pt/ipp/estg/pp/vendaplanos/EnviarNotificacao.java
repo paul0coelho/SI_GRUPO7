@@ -44,7 +44,7 @@ public class EnviarNotificacao {
                                     .open();
                     
                     
-                    Thread.sleep(10000);
+                    Thread.sleep(60000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

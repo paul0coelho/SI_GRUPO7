@@ -8,7 +8,8 @@ import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProvider;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProviderBuilder;
 import java.time.Duration;
 import org.camunda.bpm.engine.RuntimeService;
-import pt.ipp.estg.pp.vendaplanos.handler.EnviarNotificacaoHandler;
+import pt.ipp.estg.pp.vendaplanos.handler.EnviarPlanoHandler;
+import pt.ipp.estg.pp.vendaplanos.handler.EnviarReferenciaHandler;
 
 
 /**
@@ -40,7 +41,7 @@ public class EnviarPlano {
                     final JobWorker enviarNotificacaoWorker
                             = client.newWorker()
                                     .jobType("enviarPlano")
-                                    .handler(new EnviarNotificacaoHandler())
+                                    .handler(new EnviarPlanoHandler())
                                     .timeout(Duration.ofSeconds(10).toMillis())
                                     .open();
                     

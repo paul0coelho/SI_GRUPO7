@@ -3,7 +3,6 @@ package pt.ipp.estg.pp.vendaplanos.handler;
 import io.camunda.zeebe.client.api.response.ActivatedJob;
 import io.camunda.zeebe.client.api.worker.JobClient;
 import io.camunda.zeebe.client.api.worker.JobHandler;
-
 import jakarta.mail.Authenticator;
 import jakarta.mail.Message;
 import jakarta.mail.MessagingException;
@@ -12,13 +11,16 @@ import jakarta.mail.Session;
 import jakarta.mail.Transport;
 import jakarta.mail.internet.InternetAddress;
 import jakarta.mail.internet.MimeMessage;
-
 import java.util.Properties;
-import jakarta.activation.DataHandler;
 
+/**
+ 
+Handler para a SendTask "Enviar Notificação"
+Simula o envio de uma notificação para o cliente.*/
+public class EnviarPlanoHandler implements JobHandler {
 
-public class EnviarNotificacaoHandler implements JobHandler {
-
+    
+    
     @Override
     public void handle(JobClient client, ActivatedJob job) {
         String to = "8220160@estg.ipp.pt";
@@ -45,8 +47,8 @@ public class EnviarNotificacaoHandler implements JobHandler {
                 MimeMessage message = new MimeMessage(session);
                 message.setFrom(new InternetAddress(from));
                 message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setSubject("Notificação de Pagamento Inválido");
-                message.setText("O pagamento foi inválido. Por favor, tente novamente ou entre em contacto connosco.");
+                message.setSubject("Plano Criado");
+                message.setText("Já recebeu o plano que requisitou!");
 
                 Transport.send(message);
                 System.out.println("Email enviado com sucesso!");

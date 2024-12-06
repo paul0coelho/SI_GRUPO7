@@ -2,11 +2,17 @@ AcompanhamentoProfissionais\EnviarRelatorio.class
 pt\ipp\estg\pp\vendaplanos\handler\atribuirPacoteHandler.class
 pt\ipp\estg\pp\vendaplanos\ValidaPagamento.class
 pt\ipp\estg\pp\vendaplanos\service\ValidarPagamentoService.class
+pt\ipp\estg\pp\vendaplanos\handler\EnviarRelatorioHandler$1.class
 pt\ipp\estg\pp\vendaplanos\handler\EnviarNotificacaoHandler.class
 pt\ipp\estg\pp\vendaplanos\EnviaReferencia.class
 pt\ipp\estg\pp\vendaplanos\AtribuirPacote.class
+pt\ipp\estg\pp\vendaplanos\handler\EnviarNotificacaoHandler$1.class
+pt\ipp\estg\pp\vendaplanos\handler\EnviarReferenciaHandler$1.class
 pt\ipp\estg\pp\vendaplanos\ReceberReferencia.class
 pt\ipp\estg\pp\vendaplanos\handler\AtribuirPacoteServiceHandler.class
+pt\ipp\estg\pp\vendaplanos\handler\EnviarPlanoHandler$1.class
+pt\ipp\estg\pp\vendaplanos\handler\EnviarPlanoHandler.class
+pt\ipp\estg\pp\vendaplanos\handler\EnviarRelatorioHandler.class
 pt\ipp\estg\pp\vendaplanos\handler\ValidarPagamentoServiceHandler.class
 AcompanhamentoProfissionais\EnviarPlano.class
 pt\ipp\estg\pp\vendaplanos\EnviarNotificacao.class
