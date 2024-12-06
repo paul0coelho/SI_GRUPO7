@@ -7,13 +7,12 @@ import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProvider;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProviderBuilder;
 import java.time.Duration;
 import org.camunda.bpm.engine.RuntimeService;
-import pt.ipp.estg.pp.vendaplanos.handler.EnviarNotificacaoHandler;
-
+import pt.ipp.estg.pp.vendaplanos.handler.EnviarReferenciaHandler;
 
 /**
  * Configura os Workers para o Camunda.
  */
-public class EnviarNotificacao {
+public class EnviaReferencia {
 
     private static final String ZEEBE_ADDRESS = "dfdb8d36-5bf6-4b20-be42-8205ce0805f0.bru-2.zeebe.camunda.io:443";
     private static final String ZEEBE_CLIENT_ID = "GV3L26WwwbW7dvg2Kw_tr6zyVvlN0z0_";
@@ -38,12 +37,34 @@ public class EnviarNotificacao {
                     //enviar o email
                     final JobWorker enviarNotificacaoWorker
                             = client.newWorker()
-                                    .jobType("enviarNotificacaoPagamentoInvalido")
-                                    .handler(new EnviarNotificacaoHandler())
+                                    .jobType("enviarNotificacao")
+                                    .handler(new EnviarReferenciaHandler())
+                                    .timeout(Duration.ofSeconds(10).toMillis())
+                                    .open();
+
+                /*    client.newPublishMessageCommand()
+                            .messageName("Referencia") // Nome da mensagem (igual ao definido no BPMN)
+                            .correlationKey("123456789") // Chave de correlação (deve coincidir com a variável "referencia")
+                            .variables("{\"Referencia\": \"123456789\"}") // Variáveis adicionais
+                            .send()
+                            .join();
+
+                    final JobWorker validarPagamentoWorker
+                            = client.newWorker()
+                                    .jobType("validarPagamento")
+                                    .handler(new ValidarPagamentoServiceHandler())
                                     .timeout(Duration.ofSeconds(10).toMillis())
                                     .open();
                     
+                    final JobWorker atribuirWorker
+                            = client.newWorker()
+                                    .jobType("validarPagamento")
+                                    .handler(new ValidarPagamentoServiceHandler())
+                                    .timeout(Duration.ofSeconds(10).toMillis())
+                                    .open();*/
                     
+                    
+                    System.out.println("Workers configurados. Aguardando tarefas...");
                     Thread.sleep(10000);
                 } catch (Exception e) {
                     e.printStackTrace();

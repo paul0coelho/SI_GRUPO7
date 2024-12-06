@@ -1,5 +1,6 @@
-package pt.ipp.estg.pp.vendaplanos;
+package AcompanhamentoProfissionais;
 
+import pt.ipp.estg.pp.vendaplanos.*;
 import pt.ipp.estg.pp.vendaplanos.handler.ValidarPagamentoServiceHandler;
 import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.worker.JobWorker;
@@ -13,7 +14,7 @@ import pt.ipp.estg.pp.vendaplanos.handler.EnviarNotificacaoHandler;
 /**
  * Configura os Workers para o Camunda.
  */
-public class EnviarNotificacao {
+public class EnviarPlano {
 
     private static final String ZEEBE_ADDRESS = "dfdb8d36-5bf6-4b20-be42-8205ce0805f0.bru-2.zeebe.camunda.io:443";
     private static final String ZEEBE_CLIENT_ID = "GV3L26WwwbW7dvg2Kw_tr6zyVvlN0z0_";
@@ -38,11 +39,17 @@ public class EnviarNotificacao {
                     //enviar o email
                     final JobWorker enviarNotificacaoWorker
                             = client.newWorker()
-                                    .jobType("enviarNotificacaoPagamentoInvalido")
+                                    .jobType("enviarPlano")
                                     .handler(new EnviarNotificacaoHandler())
                                     .timeout(Duration.ofSeconds(10).toMillis())
                                     .open();
                     
+                    client.newPublishMessageCommand()
+                            .messageName("Plano") // Nome da mensagem (igual ao definido no BPMN)
+                            .correlationKey("planoFornecido") // Chave de correlação (deve coincidir com a variável "referencia")
+                            .variables("{\"Plano\": \"plano\"}") // Variáveis adicionais
+                            .send()
+                            .join();
                     
                     Thread.sleep(10000);
                 } catch (Exception e) {
