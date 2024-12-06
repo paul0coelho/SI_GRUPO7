@@ -43,8 +43,13 @@ public class EnviarNotificacao {
                                     .timeout(Duration.ofSeconds(10).toMillis())
                                     .open();
                     
-                    
-                    Thread.sleep(60000);
+                    client.newPublishMessageCommand()
+                            .messageName("Pagamento") // Nome da mensagem (igual ao definido no BPMN)
+                            .correlationKey("invalido") // Chave de correlação (deve coincidir com a variável "referencia")
+                            .variables("{\"Pagamento\": \"invalido\"}") // Variáveis adicionais
+                            .send()
+                            .join();
+                    Thread.sleep(30000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

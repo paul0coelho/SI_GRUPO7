@@ -42,30 +42,16 @@ public class EnviaReferencia {
                                     .timeout(Duration.ofSeconds(10).toMillis())
                                     .open();
 
-                /*    client.newPublishMessageCommand()
+              client.newPublishMessageCommand()
                             .messageName("Referencia") // Nome da mensagem (igual ao definido no BPMN)
                             .correlationKey("123456789") // Chave de correlação (deve coincidir com a variável "referencia")
                             .variables("{\"Referencia\": \"123456789\"}") // Variáveis adicionais
                             .send()
                             .join();
-
-                    final JobWorker validarPagamentoWorker
-                            = client.newWorker()
-                                    .jobType("validarPagamento")
-                                    .handler(new ValidarPagamentoServiceHandler())
-                                    .timeout(Duration.ofSeconds(10).toMillis())
-                                    .open();
-                    
-                    final JobWorker atribuirWorker
-                            = client.newWorker()
-                                    .jobType("validarPagamento")
-                                    .handler(new ValidarPagamentoServiceHandler())
-                                    .timeout(Duration.ofSeconds(10).toMillis())
-                                    .open();*/
                     
                     
                     System.out.println("Workers configurados. Aguardando tarefas...");
-                    Thread.sleep(10000);
+                    Thread.sleep(30000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

@@ -52,7 +52,7 @@ public class EnviarRelatorio {
                             .send()
                             .join();
                     
-                    Thread.sleep(10000);
+                    Thread.sleep(30000);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
