@@ -1,14 +1,15 @@
 package AcompanhamentoProfissionais;
 
-import handlers.ValidarPagamentoServiceHandler;
+import pt.ipp.estg.pp.vendaplanos.*;
+import pt.ipp.estg.pp.vendaplanos.handler.ValidarPagamentoServiceHandler;
 import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.worker.JobWorker;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProvider;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProviderBuilder;
 import java.time.Duration;
 import org.camunda.bpm.engine.RuntimeService;
-import handlers.EnviarReferenciaHandler;
-import handlers.EnviarRelatorioHandler;
+import pt.ipp.estg.pp.vendaplanos.handler.EnviarReferenciaHandler;
+import pt.ipp.estg.pp.vendaplanos.handler.EnviarRelatorioHandler;
 
 
 /**
@@ -45,9 +46,9 @@ public class EnviarRelatorio {
                                     .open();
                     
                     client.newPublishMessageCommand()
-                            .messageName("Relatorio")
-                            .correlationKey("relatorio")
-                            .variables("{\"Relatorio\": \"relatorio\"}")
+                            .messageName("Relatorio") // Nome da mensagem (igual ao definido no BPMN)
+                            .correlationKey("relatorio") // Chave de correlação (deve coincidir com a variável "referencia")
+                            .variables("{\"Relatorio\": \"relatorio\"}") // Variáveis adicionais
                             .send()
                             .join();
                     

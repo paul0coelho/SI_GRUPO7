@@ -1,21 +1,21 @@
-package AcompanhamentoProfissionais;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package pt.ipp.estg.pp.vendaplanos;
 
-import pt.ipp.estg.pp.vendaplanos.*;
-import pt.ipp.estg.pp.vendaplanos.handler.ValidarPagamentoServiceHandler;
 import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.worker.JobWorker;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProvider;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProviderBuilder;
 import java.time.Duration;
-import org.camunda.bpm.engine.RuntimeService;
-import pt.ipp.estg.pp.vendaplanos.handler.EnviarPlanoHandler;
-import pt.ipp.estg.pp.vendaplanos.handler.EnviarReferenciaHandler;
-
+import pt.ipp.estg.pp.vendaplanos.handler.ValidarPagamentoServiceHandler;
 
 /**
- * Configura os Workers para o Camunda.
+ *
+ * @author duart
  */
-public class EnviarPlano {
+public class ValidaPagamento {
 
     private static final String ZEEBE_ADDRESS = "dfdb8d36-5bf6-4b20-be42-8205ce0805f0.bru-2.zeebe.camunda.io:443";
     private static final String ZEEBE_CLIENT_ID = "GV3L26WwwbW7dvg2Kw_tr6zyVvlN0z0_";
@@ -37,24 +37,18 @@ public class EnviarPlano {
                         .gatewayAddress(ZEEBE_ADDRESS)
                         .credentialsProvider(credentialsProvider)
                         .build();) {
-                    //enviar o email
-                    final JobWorker enviarNotificacaoWorker
+
+                    final JobWorker validarPagamentoWorker
                             = client.newWorker()
-                                    .jobType("enviarPlano")
-                                    .handler(new EnviarPlanoHandler())
+                                    .jobType("validarPagamento")
+                                    .handler(new ValidarPagamentoServiceHandler())
                                     .timeout(Duration.ofSeconds(10).toMillis())
                                     .open();
-                    
-                    client.newPublishMessageCommand()
-                            .messageName("Plano") // Nome da mensagem (igual ao definido no BPMN)
-                            .correlationKey("planoFornecido") // Chave de correlação (deve coincidir com a variável "referencia")
-                            .variables("{\"Plano\": \"plano\"}") // Variáveis adicionais
-                            .send()
-                            .join();
-                    
-                    Thread.sleep(30000);
+
+                    Thread.sleep(10000);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    System.out.println(e.toString());
                 }
     }
+
 }
