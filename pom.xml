@@ -67,4 +67,5 @@
         </dependency>
 
     </dependencies>
+    <name>MapasProcessos</name>
 </project>

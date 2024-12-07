@@ -1,15 +1,14 @@
 package AcompanhamentoProfissionais;
 
-import pt.ipp.estg.pp.vendaplanos.*;
-import pt.ipp.estg.pp.vendaplanos.handler.ValidarPagamentoServiceHandler;
+import handlers.ValidarPagamentoServiceHandler;
 import io.camunda.zeebe.client.ZeebeClient;
 import io.camunda.zeebe.client.api.worker.JobWorker;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProvider;
 import io.camunda.zeebe.client.impl.oauth.OAuthCredentialsProviderBuilder;
 import java.time.Duration;
 import org.camunda.bpm.engine.RuntimeService;
-import pt.ipp.estg.pp.vendaplanos.handler.EnviarPlanoHandler;
-import pt.ipp.estg.pp.vendaplanos.handler.EnviarReferenciaHandler;
+import handlers.EnviarPlanoHandler;
+import handlers.EnviarReferenciaHandler;
 
 
 /**
@@ -46,9 +45,9 @@ public class EnviarPlano {
                                     .open();
                     
                     client.newPublishMessageCommand()
-                            .messageName("Plano") // Nome da mensagem (igual ao definido no BPMN)
-                            .correlationKey("planoFornecido") // Chave de correlação (deve coincidir com a variável "referencia")
-                            .variables("{\"Plano\": \"plano\"}") // Variáveis adicionais
+                            .messageName("Plano")
+                            .correlationKey("planoFornecido")
+                            .variables("{\"Plano\": \"plano\"}")
                             .send()
                             .join();
                     
